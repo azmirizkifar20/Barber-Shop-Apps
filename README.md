@@ -2,6 +2,7 @@
 Aplikasi sederhana pengelola transaksi Barber Shop menggunakan kotlin dengan menggunakan MVVM arsitektur dan Room DB
 
 <h2>Tampilan Aplikasi</h2>
+
 ![241510](https://user-images.githubusercontent.com/43155964/77769499-83541900-7076-11ea-9657-b82e8a40327e.jpg)
 
 ![241511](https://user-images.githubusercontent.com/43155964/77769536-91099e80-7076-11ea-8db4-d295a4eb0ae8.jpg)
