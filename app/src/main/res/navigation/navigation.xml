@@ -13,10 +13,17 @@
         <action
             android:id="@+id/action_homeFragment_to_tambahTransaksiFragment"
             app:destination="@id/tambahTransaksiFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_editTransaksiFragment"
+            app:destination="@id/editTransaksiFragment" />
     </fragment>
     <fragment
         android:id="@+id/tambahTransaksiFragment"
         android:name="org.d3if4055.barbershop.fragment.TambahTransaksiFragment"
         android:label="fragment_tambah_transaksi"
         tools:layout="@layout/fragment_tambah_transaksi" />
+    <fragment
+        android:id="@+id/editTransaksiFragment"
+        android:name="org.d3if4055.barbershop.fragment.EditTransaksiFragment"
+        android:label="EditTransaksiFragment" />
 </navigation>

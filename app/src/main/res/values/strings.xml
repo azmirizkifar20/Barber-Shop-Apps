@@ -22,4 +22,12 @@
     <string name="kembalian">Kembalian</string>
     <string name="submit_transaksi">Submit transaksi</string>
     <string name="reset">reset</string>
+    <string name="jumat_27_maret_2020">Jumat, 27 Maret 2020</string>
+    <string name="azmi">Azmi</string>
+    <string name="paket">(Haircut)</string>
+    <string name="delete_confirmation">Yakin ingin menghapus data transaksi?</string>
+    <string name="yes">Yes</string>
+    <string name="success_delete">Data berhasil dihapus!</string>
+    <string name="edit_transaksi">Edit Transaksi</string>
+    <string name="update_transaksi">Update Transaksi</string>
 </resources>

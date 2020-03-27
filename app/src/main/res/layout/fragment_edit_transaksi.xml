@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -10,7 +10,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:context=".fragment.TambahTransaksiFragment">
+            tools:context=".fragment.EditTransaksiFragment">
+
 
             <TextView
                 android:id="@+id/textView"
@@ -19,7 +20,7 @@
                 android:layout_margin="16dp"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center_horizontal"
-                android:text="@string/tambah_transaksi"
+                android:text="@string/edit_transaksi"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="24sp"
@@ -135,12 +136,13 @@
                 android:layout_marginEnd="24dp"
                 android:background="@color/colorAccent"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:text="@string/proses_transaksi"
+                android:text="@string/update_transaksi"
                 android:textColor="@android:color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/input_layout_total_bayar" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </ScrollView>
 </layout>

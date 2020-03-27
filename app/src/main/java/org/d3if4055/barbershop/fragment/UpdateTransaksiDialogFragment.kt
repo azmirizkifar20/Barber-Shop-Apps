@@ -9,7 +9,6 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.dialog_fragment_tambah_transaksi.*
 
 import org.d3if4055.barbershop.R
@@ -20,7 +19,7 @@ import org.d3if4055.barbershop.viewmodel.BarberShopViewModel
 import org.d3if4055.barbershop.viewmodel.BarberShopViewModelFactory
 
 @Suppress("SpellCheckingInspection")
-class TambahTransaksiDialogFragment(
+class UpdateTransaksiDialogFragment(
     private val dataBarberShop: BarberShop
 ) : DialogFragment() {
 
@@ -29,7 +28,7 @@ class TambahTransaksiDialogFragment(
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.dialog_fragment_tambah_transaksi, container, false)
+        return inflater.inflate(R.layout.dialog_fragment_update_transaksi, container, false)
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
@@ -50,10 +49,9 @@ class TambahTransaksiDialogFragment(
         val barberShopViewModel = ViewModelProvider(this, viewModelFactory).get(BarberShopViewModel::class.java)
 
         btn_submit_transaksi.setOnClickListener {
-            barberShopViewModel.onClickInsert(dataBarberShop)
+            barberShopViewModel.onClickUpdate(dataBarberShop)
             this.dismiss()
             this.findNavController().popBackStack()
-            Snackbar.make(requireView(), "Berhasil tambah transaksi", Snackbar.LENGTH_SHORT).show()
         }
     }
 

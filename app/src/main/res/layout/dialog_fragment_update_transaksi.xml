@@ -7,7 +7,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginHorizontal="16dp"
-        tools:context=".fragment.TambahTransaksiFragment">
+        tools:context=".fragment.EditTransaksiFragment">
 
         <TextView
             android:layout_width="match_parent"
@@ -117,7 +117,7 @@
             android:layout_height="wrap_content"
             android:background="@color/colorAccent"
             android:foreground="?attr/selectableItemBackgroundBorderless"
-            android:text="@string/submit_transaksi"
+            android:text="@string/update_transaksi"
             android:textColor="@android:color/white" />
 
     </LinearLayout>
