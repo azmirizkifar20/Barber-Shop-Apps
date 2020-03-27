@@ -1,4 +1,4 @@
-# Android Application Barber Shop
+# Aplikasi Android Barber Shop
 Aplikasi sederhana pengelola transaksi Barber Shop menggunakan kotlin dengan menggunakan MVVM arsitektur dan Room DB
 
 <h2>Tampilan Aplikasi</h2>
