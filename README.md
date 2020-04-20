@@ -3,5 +3,6 @@ Aplikasi sederhana pengelola transaksi Barber Shop menggunakan kotlin dengan men
 
 <h2>Tampilan Aplikasi</h2>
 
-![Capture](https://user-images.githubusercontent.com/43155964/77770834-759f9300-7078-11ea-80f9-d42dbdc1b114.PNG)
+![image](https://user-images.githubusercontent.com/43155964/79788607-1ed56280-8373-11ea-97c0-42531ef333f0.png)
+
 
