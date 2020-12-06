@@ -4,26 +4,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ScrollView
+        android:background="@android:color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:context=".fragment.EditTransaksiFragment">
-
+            android:background="@android:color/white"
+            tools:context=".ui.edit.EditTransaksiFragment">
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:fontFamily="sans-serif-medium"
                 android:gravity="center_horizontal"
                 android:text="@string/edit_transaksi"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
-                android:textSize="24sp"
+                android:textSize="26sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -43,6 +43,7 @@
                     android:id="@+id/et_nama_pelanggan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="16sp"
                     android:hint="@string/nama_pelanggan" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -103,6 +104,7 @@
                     android:layout_height="wrap_content"
                     android:editable="false"
                     android:hint="@string/total_harga"
+                    android:textSize="16sp"
                     tools:ignore="Deprecated" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -123,6 +125,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
+                    android:textSize="16sp"
                     android:hint="@string/total_bayar" />
 
             </com.google.android.material.textfield.TextInputLayout>

@@ -1,6 +1,7 @@
-package org.d3if4055.barbershop.recyclerview
+package org.d3if4055.barbershop.ui.home
 
 import android.annotation.SuppressLint
+import android.graphics.Typeface
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import org.d3if4055.barbershop.R
 import org.d3if4055.barbershop.database.BarberShop
 import org.d3if4055.barbershop.databinding.RecyclerviewBarbershopBinding
+import org.d3if4055.barbershop.utils.RecyclerViewClickListener
 import org.d3if4055.barbershop.utils.convertLongToDateString
 import org.d3if4055.barbershop.utils.rupiah
 

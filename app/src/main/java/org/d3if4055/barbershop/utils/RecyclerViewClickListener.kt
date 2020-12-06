@@ -1,4 +1,4 @@
-package org.d3if4055.barbershop.recyclerview
+package org.d3if4055.barbershop.utils
 
 import android.view.View
 import org.d3if4055.barbershop.database.BarberShop

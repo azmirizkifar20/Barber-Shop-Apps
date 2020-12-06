@@ -1,9 +1,7 @@
-package org.d3if4055.barbershop.viewmodel
+package org.d3if4055.barbershop.ui.home
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.*
 import kotlinx.coroutines.*
 import org.d3if4055.barbershop.database.BarberShop
 import org.d3if4055.barbershop.database.BarberShopDAO
@@ -65,4 +63,23 @@ class BarberShopViewModel(
         }
     }
 
+    @Suppress("UNCHECKED_CAST")
+    class Factory (
+        private val dataSource: BarberShopDAO,
+        private val application: Application
+    ) : ViewModelProvider.Factory {
+
+        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+
+            if (modelClass.isAssignableFrom(BarberShopViewModel::class.java)) {
+                return BarberShopViewModel(
+                    dataSource,
+                    application
+                ) as T
+            }
+            throw IllegalArgumentException("Unknown ViewModel class")
+
+        }
+
+    }
 }

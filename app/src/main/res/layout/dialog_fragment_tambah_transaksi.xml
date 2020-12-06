@@ -7,17 +7,16 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginHorizontal="16dp"
-        tools:context=".fragment.TambahTransaksiFragment">
+        tools:context=".ui.add.TambahTransaksiActivity">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:fontFamily="sans-serif-medium"
             android:text="@string/konfirmasi_transaksi"
             android:textAlignment="center"
             android:textColor="@android:color/black"
-            android:textSize="24sp"
+            android:textSize="26sp"
             android:gravity="center_horizontal" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -34,6 +33,7 @@
                 android:layout_marginHorizontal="16dp"
                 android:editable="false"
                 tools:ignore="Deprecated"
+                android:textSize="16sp"
                 android:hint="@string/nama_pelanggan" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -52,6 +52,7 @@
                 android:layout_marginHorizontal="16dp"
                 android:editable="false"
                 tools:ignore="Deprecated"
+                android:textSize="16sp"
                 android:hint="@string/pilihan_paket" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -70,6 +71,7 @@
                 android:layout_marginHorizontal="16dp"
                 android:editable="false"
                 tools:ignore="Deprecated"
+                android:textSize="16sp"
                 android:hint="@string/total_harga" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -88,6 +90,7 @@
                 android:layout_marginHorizontal="16dp"
                 android:editable="false"
                 tools:ignore="Deprecated"
+                android:textSize="16sp"
                 android:hint="@string/total_bayar" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -106,6 +109,7 @@
                 android:layout_marginHorizontal="16dp"
                 android:editable="false"
                 tools:ignore="Deprecated"
+                android:textSize="16sp"
                 android:hint="@string/kembalian" />
 
         </com.google.android.material.textfield.TextInputLayout>

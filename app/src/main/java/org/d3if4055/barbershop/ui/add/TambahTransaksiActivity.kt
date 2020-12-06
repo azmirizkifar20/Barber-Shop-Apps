@@ -1,52 +1,48 @@
-package org.d3if4055.barbershop.fragment
+package org.d3if4055.barbershop.ui.add
 
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.*
-import androidx.fragment.app.Fragment
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.widget.EditText
 import androidx.databinding.DataBindingUtil
-import com.google.android.material.snackbar.Snackbar
-import org.d3if4055.barbershop.MainActivity
-
+import androidx.lifecycle.ViewModelProvider
 import org.d3if4055.barbershop.R
 import org.d3if4055.barbershop.database.BarberShop
-import org.d3if4055.barbershop.databinding.FragmentTambahTransaksiBinding
+import org.d3if4055.barbershop.database.BarberShopDatabase
+import org.d3if4055.barbershop.databinding.ActivityTambahTransaksiBinding
+import org.d3if4055.barbershop.ui.HomeActivity
+import org.d3if4055.barbershop.ui.home.BarberShopViewModel
 import org.d3if4055.barbershop.utils.rupiah
 
-@Suppress("SpellCheckingInspection")
-class TambahTransaksiFragment : Fragment() {
+class TambahTransaksiActivity : AppCompatActivity() {
 
-    private lateinit var binding: FragmentTambahTransaksiBinding
+    private lateinit var viewModel: BarberShopViewModel
+    private lateinit var binding: ActivityTambahTransaksiBinding
     private var paket = ""
     private var harga = 0.0
     private var kembalian = 0.0
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        judul()
-        setHasOptionsMenu(true)
-        binding = DataBindingUtil.inflate(inflater,
-            R.layout.fragment_tambah_transaksi, container, false)
-
-        // Inflate the layout for this fragment
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        supportActionBar?.title = "MAR Barbershop"
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_tambah_transaksi)
 
         cekHarga(binding.etTotalHarga)
-
         binding.btnProses.setOnClickListener {
             inputCheck()
         }
+
+        val application = requireNotNull(this).application
+        val dataSource = BarberShopDatabase.getInstance(application).barberShopDAO
+        val viewModelFactory = BarberShopViewModel.Factory(dataSource, application)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(BarberShopViewModel::class.java)
     }
 
-    @Suppress("UNUSED_ANONYMOUS_PARAMETER")
     private fun cekHarga(etHarga: EditText) {
-        binding.rgMenu.setOnCheckedChangeListener{ group, checkedId ->
+        binding.rgMenu.setOnCheckedChangeListener{ _, _ ->
             when {
                 binding.rbMenu1.isChecked -> {
                     harga = 30000.0
@@ -89,7 +85,9 @@ class TambahTransaksiFragment : Fragment() {
             val nama = binding.etNamaPelanggan.text.toString()
             val barberShop = BarberShop(0, nama, paket, harga, totalBayar, kembalian)
 
-            TambahTransaksiDialogFragment(barberShop).show(childFragmentManager, "")
+            TambahTransaksiDialogFragment(
+                barberShop
+            ).show(supportFragmentManager, "")
         } else {
             binding.inputLayoutTotalBayar.error = getString(R.string.uang_kurang)
         }
@@ -105,13 +103,12 @@ class TambahTransaksiFragment : Fragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.reset, menu)
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.reset, menu)
+        return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
         return when(item.itemId) {
             R.id.item_reset -> {
                 reset()
@@ -119,7 +116,6 @@ class TambahTransaksiFragment : Fragment() {
             }
             else -> super.onOptionsItemSelected(item)
         }
-
     }
 
     private fun reset() {
@@ -131,10 +127,4 @@ class TambahTransaksiFragment : Fragment() {
         binding.etTotalBayar.setText("")
         binding.inputLayoutTotalBayar.error = null
     }
-
-    private fun judul() {
-        val getActivity = activity!! as MainActivity
-        getActivity.supportActionBar?.title = "Transaksi"
-    }
-
 }

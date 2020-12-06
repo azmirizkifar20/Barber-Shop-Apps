@@ -26,8 +26,11 @@
     <string name="azmi">Azmi</string>
     <string name="paket">(Haircut)</string>
     <string name="delete_confirmation">Yakin ingin menghapus data transaksi?</string>
-    <string name="yes">Yes</string>
-    <string name="success_delete">Data berhasil dihapus!</string>
+    <string name="yes">Ya</string>
+    <string name="no">Batal</string>
+    <string name="success_delete">Data transaksi berhasil dihapus!</string>
+    <string name="success_update">"Berhasil update transaksi!</string>
+    <string name="success_insert">"Berhasil tambah transaksi!</string>
     <string name="edit_transaksi">Edit Transaksi</string>
     <string name="update_transaksi">Update Transaksi</string>
 </resources>

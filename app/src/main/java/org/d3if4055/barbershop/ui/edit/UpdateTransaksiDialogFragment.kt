@@ -1,27 +1,30 @@
-package org.d3if4055.barbershop.fragment
+package org.d3if4055.barbershop.ui.edit
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.dialog_fragment_tambah_transaksi.*
 
 import org.d3if4055.barbershop.R
 import org.d3if4055.barbershop.database.BarberShop
 import org.d3if4055.barbershop.database.BarberShopDatabase
+import org.d3if4055.barbershop.ui.HomeActivity
 import org.d3if4055.barbershop.utils.rupiah
-import org.d3if4055.barbershop.viewmodel.BarberShopViewModel
-import org.d3if4055.barbershop.viewmodel.BarberShopViewModelFactory
+import org.d3if4055.barbershop.ui.home.BarberShopViewModel
 
 @Suppress("SpellCheckingInspection")
 class UpdateTransaksiDialogFragment(
     private val dataBarberShop: BarberShop
 ) : DialogFragment() {
+
+    private lateinit var viewModel: BarberShopViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +38,11 @@ class UpdateTransaksiDialogFragment(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setStyle(STYLE_NO_TITLE, android.R.style.Theme_Material_Light_Dialog_MinWidth)
+
+        val application = requireNotNull(this.activity).application
+        val dataSource = BarberShopDatabase.getInstance(application).barberShopDAO
+        val viewModelFactory = BarberShopViewModel.Factory(dataSource, application)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(BarberShopViewModel::class.java)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,16 +50,11 @@ class UpdateTransaksiDialogFragment(
 
         setEditText()
 
-        // call view model
-        val application = requireNotNull(this.activity).application
-        val dataSource = BarberShopDatabase.getInstance(application).barberShopDAO
-        val viewModelFactory = BarberShopViewModelFactory(dataSource, application)
-        val barberShopViewModel = ViewModelProvider(this, viewModelFactory).get(BarberShopViewModel::class.java)
-
         btn_submit_transaksi.setOnClickListener {
-            barberShopViewModel.onClickUpdate(dataBarberShop)
+            viewModel.onClickUpdate(dataBarberShop)
             this.dismiss()
-            this.findNavController().popBackStack()
+            startActivity(Intent(requireContext(), HomeActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+            Toast.makeText(requireContext(), getString(R.string.success_update), Toast.LENGTH_SHORT).show()
         }
     }
 
