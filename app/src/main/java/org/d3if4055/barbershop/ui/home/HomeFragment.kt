@@ -1,5 +1,6 @@
 package org.d3if4055.barbershop.ui.home
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.*
 import androidx.core.os.bundleOf
@@ -9,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.fragment_home.*
 
 import org.d3if4055.barbershop.R
 import org.d3if4055.barbershop.database.BarberShop
@@ -35,7 +37,6 @@ class HomeFragment : Fragment(),
         val dataSource = BarberShopDatabase.getInstance(application).barberShopDAO
         val viewModelFactory = BarberShopViewModel.Factory(dataSource, application)
         viewModel = ViewModelProvider(this, viewModelFactory).get(BarberShopViewModel::class.java)
-
         // Inflate the layout for this fragment
         return binding.root
     }
@@ -52,10 +53,26 @@ class HomeFragment : Fragment(),
             // set listener
             adapter.listener = this
         })
+        clearDataTransaksi()
 
 //        binding.fabAddTransaksi.setOnClickListener {
 //            it.findNavController().navigate(R.id.action_homeFragment_to_tambahTransaksiFragment)
 //        }
+    }
+
+    private fun clearDataTransaksi(){
+        imageView_clear_data_transaksi.setOnClickListener {
+            AlertDialog.Builder(requireContext()).also {
+                it.setTitle(getString(R.string.delete_all_confirmation))
+                it.setPositiveButton(getString(R.string.yes)) { _, _ ->
+                    viewModel.onClickClear()
+                }
+                it.setNegativeButton(getString(R.string.no)) {dialog, _ ->
+                    dialog.dismiss()
+                }
+                it.setCancelable(false)
+            }.create().show()
+        }
     }
 
     override fun onRecyclerViewItemClicked(view: View, barberShop: BarberShop) {

@@ -11,6 +11,7 @@ abstract class BarberShopDatabase : RoomDatabase() {
     abstract val barberShopDAO: BarberShopDAO
 
     companion object {
+        const val DATABASE_NAME = "barbershop_database"
         @Volatile
         private var INSTANCE: BarberShopDatabase? = null
 
@@ -22,7 +23,7 @@ abstract class BarberShopDatabase : RoomDatabase() {
                     instance = Room.databaseBuilder(
                             context.applicationContext,
                             BarberShopDatabase::class.java,
-                            "barbershop_database"
+                            DATABASE_NAME
                         )
                         .fallbackToDestructiveMigration()
                         .build()
